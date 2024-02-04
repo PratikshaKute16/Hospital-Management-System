@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base :: Layout(~{::section})">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Appointment Page</title>
+</head>
+<body>
+<section>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header text-center fs-4">Appointment Form</div>
+                    <div class="card-body">
+                        <form action="/user/appointment" method="post">
+
+                        <div class="mb-3">
+                                <input type="text" name="firstname" placeholder="First Name" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" name="lastname"  placeholder="Last Name" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" name="email"  placeholder="Email Address" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" name="contactnumber"  placeholder="Contact Number" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="date">Date:</label>
+                                <input type="date" id="date" name="date" pattern="yyyy-MM-dd" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="time">Time:</label>
+                                <input type="time" id="time" name="time" pattern="HH:mm" required>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <select id="appointmentType" name="appointmentType">
+                                    <option value="option 0">Reason of Appointment</option>
+                                    <option value="option1">Cold,Fever and Body Pain</option>
+                                    <option value="option2">Heart Disease</option>
+                                    <option value="option3">Brain disease</option>
+                                    <option value="option3">other</option>
+                                                                                            <!-- Add more options as needed -->
+                                </select>
+<!--                                <div class="mb-3">-->
+
+<!--                                    <input type="boolean" id="del" name="deleted">-->
+<!--                                </div>-->
+                            </div>
+
+                            <button type="submit" class="btn btn-primary col-md-12">Submit</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base :: Layout(~{::section})">
+<head>
+
+    <meta charset="ISO-8859-1">
+    <title>Register Page</title>
+</head>
+<body>
+<section>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                <div class="card-header text-center fs-4">Registration Form</div>
+
+                    <th:block th:if="${session.msg}">
+                        <p class="text-center fs-5 text-success">[[${session.msg}]]</p>
+<!--                       <th:block th:text="${#session.removeAttribute('msg')}"></th:block>-->
+                    </th:block>
+
+                    <div class="card-body">
+                        <form action="createUser" method="post">
+                            <div class="mb-3">
+
+                                <input type="text" name="fullName" placeholder="Enter Your Full Name" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+
+                                <input type="text" name="email"  placeholder="Email" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="password" name="password" placeholder="Password" class="form-control">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label>Gender:</label>
+                                <label class="radio"><input type="radio" name="gender" value="male"> Male</label>
+                                <label class="radio"><input type="radio" name="gender" value="female"> Female</label>
+                                <label class="radio"><input type="radio" name="gender" value="other"> Other</label>
+                            </div>
+
+<!--                            <div class="mb-3">-->
+<!--                                <select id="role" name="role">-->
+<!--                                    <option value="option 0">Role</option>-->
+<!--                                    <option value="user">User</option>-->
+<!--                                    <option value="doctor">Doctor</option>-->
+<!--                                    <option value="admin">Admin</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+                            <button class="btn btn-primary col-md-12">Register</button>
+
+                        </form>
+
+                        <span>Already have an account?<a class="txt1 bo1 hov1" th:href="@{/signin}">
+							Log-in
+						</a></span>
+
+
+                    </div>
+        </div>
+            </div>
+    </div>
+    </div>
+
+</section>
+
+
+</body>
+
+</html>

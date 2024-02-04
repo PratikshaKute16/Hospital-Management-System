@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base :: Layout(~{::section})" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Index Page</title>
+    <style>
+        body {
+      background-color:grey;
+}
+    </style>
+</head>
+<body>
+<section>
+    <header>
+        <h1>Welcome to LifeLine Hospital</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}" class="active">Home</a></li>
+                <li><a th:href="@{/aboutUs}">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <div id="main-content">
+
+        <!-- Hero Section -->
+
+
+        <!-- About Us Section -->
+        <section id="about-us">
+            <h2>About Us</h2>
+            <p>
+                Discover a hospital where innovation meets empathy. LifeLine Hospital is a beacon of
+                healthcare excellence, leading the way in medical advancements and breakthroughs.
+                From state-of-the-art facilities to a team of renowned specialists,
+                we are dedicated to ensuring you receive the highest standard of care.
+            </p>
+            <a th:href="@{/aboutUs}" class="button">Learn More</a>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Medical Services</li>
+                <li>Surgical Services</li>
+                <li>Emergency Care</li>
+
+            </ul>
+
+        </section>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+
+    </footer>
+</section>
+
+</body>
+</html>

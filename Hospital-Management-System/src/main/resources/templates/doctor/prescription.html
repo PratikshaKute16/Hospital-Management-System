@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base :: Layout(~{::section})">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Prescription</title>
+</head>
+<body>
+<section>
+
+
+
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header text-center fs-4">Prescription Form</div>
+                    <div class="card-body">
+
+                        <form action="/prescription/submit" method="post" th:object="${prescription}">
+        <!-- Patient Information -->
+        <div class="mb-3">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName" class="form-control" th:required="true">
+       </div>
+
+        <div class="mb-3">
+        <label for="patientAge">Patient Age:</label>
+        <input type="number" id="patientAge" name="patientAge" class="form-control" th:required="true">
+        </div>
+
+        <div class="mb-3">
+        <label for="diagnosis">Diagnosis:</label>
+        <textarea id="diagnosis" name="diagnosis" rows="4" class="form-control" th:required="true"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="prescriptionDate" pattern="yyyy-MM-dd" required>
+        </div>
+        <!-- Medication Information -->
+        <h3>Medication Details</h3>
+        <div class="mb-3">
+        <label for="medicationName">Medication Name:</label>
+        <input type="text" id="medicationName" name="medicationName" class="form-control" th:required="true">
+        </div>
+
+        <div class="mb-3">
+        <label for="dosage">Dosage:</label>
+        <input type="text" id="dosage" name="dosage" class="form-control" th:required="true">
+        </div>
+
+        <div class="mb-3">
+        <label for="instructions">Instructions:</label>
+        <textarea id="instructions" name="instructions" class="form-control" rows="4" th:required="true"></textarea>
+        </div>
+        <!-- Additional Information -->
+        <h3>Additional Information</h3>
+        <div class="mb-3">
+        <label for="followUpDate">Follow-up Date:</label>
+        <input type="date" id="followUpDate" class="form-control" name="followUpDate">
+        </div>
+
+        <div class="mb-3">
+            <select id="paymentStatus" name="paymentStatus">
+                <option value="option 0">Payment Status</option>
+                <option value="paid">Paid</option>
+                <option value="pending">Pending</option>
+            </select>
+        </div>
+<!--                            <input type="hidden" name="appointmentId" value="${appointmentId}" />-->
+
+                            <!-- Submit Button -->
+                            <button type="submit">Submit Prescription</button>
+
+
+    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

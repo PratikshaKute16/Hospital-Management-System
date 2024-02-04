@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base :: Layout(~{::section})">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Doctor Appointments</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/webjars/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+<section>
+
+    <div th:if="${successMessage}" class="success-message">
+        <p th:text="${successMessage}"></p>
+    </div>
+
+    <h2>Doctor Appointments</h2>
+
+    <!-- Display notifications for new appointments -->
+    <div id="notificationArea"></div>
+
+    <table id="appointmentTable" border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Date</th>
+            <th>Appointment Type</th>
+            <th>Delete</th>
+            <th>Prescription</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over the appointments and display each row -->
+        <tr th:each="appointment : ${appointments}">
+            <td th:text="${appointment.id}"></td>
+            <td th:text="${appointment.firstname}"></td>
+            <td th:text="${appointment.lastname}"></td>
+            <td th:text="${appointment.email}"></td>
+            <td th:text="${appointment.contactnumber}"></td>
+            <td th:text="${appointment.date}"></td>
+            <td th:text="${appointment.appointmentType}"></td>
+            <td><a th:href="@{'/doctor/delete/' + ${appointment.Id}}">Delete</a></td>
+            <td><a th:href="@{'/doctor/get/' + ${appointment.Id}}">Prescription</a></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var stompClient = null;
+
+        function connect() {
+            var socket = new SockJS('/ws');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function (frame) {
+                stompClient.subscribe('/topic/appointments', function (notification) {
+                    // Handle the notification, e.g., display it on the doctor's dashboard
+                    var notificationText = JSON.parse(notification.body);
+                    $('#notificationArea').append('<p>' + notificationText + '</p>');
+                });
+            });
+        }
+
+        connect();
+    </script>
+
+</section>
+</body>
+</html>
